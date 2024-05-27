@@ -1,10 +1,4 @@
-# GHC 2023 - From Idea to Chatbot: A Step-by-Step Guide with ChatGPT and Python
-
-Welcome to the  "From Idea to Chatbot: A Step-by-Step Guide with ChatGPT and Python" Level Up Lab. We have put together what you need to do prior to attending the lab and some pointers in case you miss anything. Please let us know if you have any issues!
-
-## Tasks Prior to Attending GHC 2023
-
-As this is a lab, please ensure you come prepared to participate by doing the following steps (*this should be done **prior** to coming to the conference*):
+# From Idea to Chatbot
 
 ### Setup your development environment:
 

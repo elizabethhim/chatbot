@@ -1,13 +1,13 @@
-import openai
+from openai import OpenAI
+
+client = OpenAI()
 import streamlit as st
 
 def generate_response(myprompt):
-    response = openai.Completion.create(
-        engine="text-davinci-003",
-        prompt="Your role is to act like a licenced therapist. Give your answers accordingly.###" + myprompt,
-        temperature=.3,
-        max_tokens=1024
-    )
+    response = client.completions.create(engine="text-davinci-003",
+    prompt="Your role is to act like a licenced therapist. Give your answers accordingly.###" + myprompt,
+    temperature=.3,
+    max_tokens=1024)
     return response.choices[0].text.strip()
 
 def main ():

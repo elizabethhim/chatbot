@@ -1,8 +1,10 @@
-import openai
+import config
+from openai import OpenAI
+
+client = OpenAI(api_key=config.openai_key)
 
 #NOTE: Run this command prior to running the code below: pip install openai
 
-openai.api_key = "Your API key here"
 
 #Set up the model and prompt
 engine = "text-davinci-003"
@@ -16,21 +18,20 @@ desc = input("Enter what type of decoration you'd like to do: ")
 prompt = prompt + room + " that has " + desc
 
 #Call OpenAI using the ChatGPT model
-response = openai.Completion.create(
-        engine=engine,
-        prompt=prompt,
-        max_tokens=1024,
-        n=1,
-        temperature=0.7)
+response = client.completions.create(engine=engine,
+prompt=prompt,
+max_tokens=1024,
+n=1,
+temperature=0.7)
 
 #Get image generation prompt from response
-image_generation_prompt = response["choices"][0]["text"]
+image_generation_prompt = response.choices[0].text
 
 #Display prompt
 print("Open AI Response: " + image_generation_prompt)
 
 #Call OpenAI DALL-E model
-response = openai.Image.create(prompt=image_generation_prompt, n=1, size="512x512")
+response = client.images.generate(prompt=image_generation_prompt, n=1, size="512x512")
 
 #Get image from response
 image = response.data[0].url

@@ -1,13 +1,13 @@
-import openai
-openai.api_key="Your API Key here"
+import config
+from openai import OpenAI
+
+client = OpenAI(api_key=config.openai_key)
 
 def generate_response(myprompt):
-    response = openai.Completion.create(
-        engine="text-davinci-003",
-        prompt=myprompt,
-        temperature=.1,
-        max_tokens=1024
-    )
+    response = client.completions.create(model="gpt-3.5-turbo",
+    prompt=myprompt,
+    temperature=.1,
+    max_tokens=1024)
     print (response.choices)
     return response.choices[0].text.strip()
 
